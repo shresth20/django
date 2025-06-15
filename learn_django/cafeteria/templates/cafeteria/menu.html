@@ -1,0 +1,103 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Cafeteria Drinks Menu
+{% endblock %}
+
+{% block content %}
+<div class="menu-body">
+    <div class="title">
+        <h1>Cafeteria Menu</h1>
+    </div>
+    <div class="drinks-section">
+        {% for dnk in drinks %}
+        <div class="drink-item">
+            <img src="{{ dnk.image.url }}" alt="{{ dnk.name }}">
+            <h3>{{ dnk.name }}</h3>
+            <p>{{ dnk.description }}</p>
+        </div>
+        {% endfor %}
+        <div class="menus">
+            <h2>All Drinks</h2>
+
+            {% for dnk in drinks %}
+            <div class="drink-item">
+                <!-- <img src="{{ dnk.image.url }}" alt="{{ dnk.name }}"> -->
+                <h3>{{ dnk.name }}</h3>
+                <p>{{ dnk.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="menus">
+            <h2>All Drinks</h2>
+            <ul>
+                <li>
+                    <div>Coffee</div>
+                </li>
+                <li>
+                    <div>Tea</div>
+                </li>
+                <li>
+                    <div>Cappuccino</div>
+                </li>
+                <li>
+                    <div>Latte</div>
+                </li>
+                <li>
+                    <div>Espresso</div>
+                </li>
+                <li>
+                    <div>Orange_Juice</div>
+                </li>
+                <li>
+                    <div>Apple_Juice</div>
+                </li>
+                <li>
+                    <div>Cola</div>
+                </li>
+                <li>
+                    <div>Lemonade</div>
+                </li>
+                <li>
+                    <div>Milkshake
+                </li>
+            </ul>
+        </div>
+        <div class="menus">
+            <h2>All Drinks</h2>
+            <ul>
+                <li>
+                    <div>Coffee</div>
+                </li>
+                <li>
+                    <div>Tea</div>
+                </li>
+                <li>
+                    <div>Cappuccino</div>
+                </li>
+                <li>
+                    <div>Latte</div>
+                </li>
+                <li>
+                    <div>Espresso</div>
+                </li>
+                <li>
+                    <div>Orange_Juice</div>
+                </li>
+                <li>
+                    <div>Apple_Juice</div>
+                </li>
+                <li>
+                    <div>Cola</div>
+                </li>
+                <li>
+                    <div>Lemonade</div>
+                </li>
+                <li>
+                    <div>Milkshake
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

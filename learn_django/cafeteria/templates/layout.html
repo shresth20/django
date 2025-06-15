@@ -1,0 +1,337 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title%}
+        Cafeteria
+        {% endblock %}
+    </title>
+    <!-- <link rel="stylesheet" href="{% static 'style.css'%}"> -->
+    <style>
+        body {
+            height: 100vh;
+            /* Full viewport height */
+            width: 100vw;
+            /* Full viewport width */
+            font-family: sans-serif;
+            margin: 0;
+            background-color: #1a1a1a;
+            /* Dark background */
+            color: #f0f0f0;
+            /* Light text */
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #2c2c2c;
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            color: #ffcc00;
+            font-size: 1.8em;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .navbar-nav {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar-nav li {
+            margin-left: 25px;
+        }
+
+        .navbar-nav a {
+            color: #f0f0f0;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav a:hover {
+            color: #ffa500;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: url('https://via.placeholder.com/1500x600/333333/ffcc00?text=Cafeteria+Vibes') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Dark overlay */
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            color: #ffcc00;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-content p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            color: #d4d4d4;
+        }
+
+        .hero-button {
+            display: inline-block;
+            background-color: #ffa500;
+            color: #1a1a1a;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .hero-button:hover {
+            background-color: #ff8c00;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            background-color: #2c2c2c;
+            /* Slightly lighter dark background for container */
+            padding: 10px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            /* Darker shadow */
+            max-width: 1000px;
+            /* margin: 0 auto; */
+            margin: 30px 30px 0; 
+        }
+
+        /* Main Content Area */
+        .content-container {
+            flex-grow: 1;
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 30px auto;
+            background-color: #2c2c2c;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        h2 {
+            color: #ffa500;
+            border-bottom: 2px solid #555;
+            padding-bottom: 10px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section-text {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #d4d4d4;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .feature-item {
+            background-color: #3a3a3a;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-item h3 {
+            color: #ffcc00;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .feature-item p {
+            font-size: 0.95em;
+            color: #d4d4d4;
+        }
+
+        .icon {
+            font-size: 3em;
+            color: #ffa500;
+            margin-bottom: 10px;
+        }
+
+        /* Testimonials/Highlights Section */
+        .highlight-card {
+            background-color: #3a3a3a;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            margin-top: 30px;
+        }
+
+        .highlight-card p {
+            font-style: italic;
+            text-align: center;
+            color: #d4d4d4;
+            margin-bottom: 15px;
+        }
+
+        .highlight-card span {
+            display: block;
+            text-align: right;
+            font-weight: bold;
+            color: #f0c880;
+        }
+
+        .menu-body>.title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        a {
+            /* all: unset; */
+            /* Resets all inherited and applied styles */
+            /* text-decoration: none; */
+            /* Removes underline */
+            color: inherit;
+            /* Inherits text color from parent */
+        }
+
+        img {
+            width: 300px;
+            margin: 10px;
+        }
+
+        .menu-body>.menus h2 {
+            width: 200px
+        }
+
+        .menu-detail {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .drinks-section {
+            display: flex;
+            /* flex-direction: column; */
+            justify-content: space-evenly;
+        }
+
+        .drinks-section ul {
+            margin: 0 35%
+        }
+
+
+        .drinks-section h1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #2c2c2c;
+            color: #d4d4d4;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .footer p {
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+
+        .footer a {
+            color: #89b4fa;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="navbar-brand">Cafeteria</a>
+        <ul class="navbar-nav">
+            <li><a href="/cafeteria/">Home</a></li>
+            <li><a href="menu">Menu</a></li>
+            <li><a href="orders">Orders</a></li>
+            <li><a href="about">About Us</a></li>
+            <li><a href="contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+
+
+    {% block content %}
+    <!-- page -->
+
+
+
+
+
+    {% endblock %}
+    <!-- end page -->
+
+
+
+    <footer class="footer">
+        <p>&copy; 2025 Our Cafeteria. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+</body>
+
+</html>

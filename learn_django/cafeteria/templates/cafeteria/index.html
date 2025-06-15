@@ -1,0 +1,57 @@
+{% extends 'layout.html'%}
+{% block title %}Welcome to Our Cafeteria!{% endblock %}
+
+
+{% block content %}
+<section class="hero-section">
+    <div class="hero-content">
+        <h1>The Daily Grind Cafeteria</h1>
+        <p>Savor fresh coffee, delightful bites, and a cozy atmosphere right here in Lucknow.</p>
+        <a href="menu" class="hero-button">View Our Menu</a>
+        {% for dnk in drinks %}
+        <div class="drink-item">
+            <!-- <img src="{{ dnk.image.url }}" alt="{{ dnk.name }}"> -->
+            <h3 ><a href="{% url 'menu_detail' dnk.id %}">{{ dnk.name }}</a></h3>
+            <p>{{ dnk.description }}, Price: {{dnk.price}}Rs.</p>
+            <!-- urls name use here  -->
+            <!-- <button><a href="{% url 'menu_detail' dnk.id %}">Details</a></button> -->
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<div class="content-container">
+    <h2>Why Choose Us?</h2>
+    <p class="section-text">Discover what makes our cafeteria your favorite local spot.</p>
+
+    <div class="features-grid">
+        <div class="feature-item">
+            <div class="icon">&#9749;</div>
+            <h3>Freshly Brewed Coffee</h3>
+            <p>Start your day with our expertly brewed coffee, made from premium beans.</p>
+        </div>
+        <div class="feature-item">
+            <div class="icon">&#127828;</div>
+            <h3>Delicious Snacks & Meals</h3>
+            <p>From quick bites to satisfying meals, we have something for every craving.</p>
+        </div>
+        <div class="feature-item">
+            <div class="icon">&#127963;</div>
+            <h3>Cozy Atmosphere</h3>
+            <p>Relax and unwind in our warm, inviting space, perfect for work or leisure.</p>
+        </div>
+        <div class="feature-item">
+            <div class="icon">&#128100;</div>
+            <h3>Friendly Service</h3>
+            <p>Our team is always ready to greet you with a smile and excellent service.</p>
+        </div>
+    </div>
+
+    <h2>What Our Customers Say</h2>
+    <div class="highlight-card">
+        <p>"This cafeteria is my go-to place! The coffee is superb, and the staff are incredibly friendly. A true gem in
+            Lucknow."</p>
+        <span>- Priya S.</span>
+    </div>
+</div>
+{% endblock %}

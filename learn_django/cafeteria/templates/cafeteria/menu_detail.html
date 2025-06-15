@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Cafeteria Menu Detail
+{% endblock %}
+
+{% block content %}
+<div class="menu-detail">
+    <div class="container">
+        <img src="{{ menu.image.url }}" alt="{{ menu.name }}">
+        <div>
+            <h1>{{menu.name}}</h1>
+            <p>{{menu.description}}</p>
+            <h5><b>Price: {{menu.price}}Rs.</b></h5>
+        </div>
+    </div>
+    <div class="menu-section">
+        <div class="menu">
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}

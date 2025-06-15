@@ -1,4 +1,4 @@
-{% load static %}
+<!-- {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,4 +9,454 @@
 </head>
 <body>
     <h1>Welcome to Home page</h1>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Food Haven Complex - Your Culinary Destination</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Dark Theme Colors */
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --bg-navbar-footer: #282828;
+            --text-light: #e0e0e0;
+            --text-muted: #b0b0b0;
+            --accent-primary: #ffcc00; /* Gold/Yellow */
+            --accent-secondary: #ffa500; /* Orange */
+            --link-color: #89b4fa; /* Light Blue */
+            --shadow-dark: rgba(0, 0, 0, 0.5);
+            --border-color: #333;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--bg-navbar-footer);
+            padding: 15px 0;
+            box-shadow: 0 4px 15px var(--shadow-dark);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--accent-primary);
+            font-size: 2em;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .navbar-nav {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar-nav li {
+            margin-left: 30px;
+        }
+
+        .navbar-nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .navbar-nav a:hover {
+            color: var(--accent-secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1500x700/222222/ffcc00?text=Food+Complex+Diversity') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh; /* Make hero section taller */
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4em;
+            margin-bottom: 25px;
+            color: var(--accent-primary);
+            text-shadow: 3px 3px 6px var(--shadow-dark);
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.4em;
+            margin-bottom: 40px;
+            color: var(--text-light);
+            text-shadow: 1px 1px 2px var(--shadow-dark);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-secondary);
+            color: var(--bg-dark); /* Dark text on orange button */
+            padding: 15px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: #e68a00; /* Slightly darker orange */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Sections General Styling */
+        .section-heading {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8em;
+            color: var(--accent-primary);
+            text-align: center;
+            margin-top: 60px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+            position: relative;
+        }
+
+        .section-heading::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-secondary);
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .section-description {
+            font-size: 1.1em;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Shop Showcase */
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .shop-card {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px var(--shadow-dark);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .shop-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .shop-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .shop-content {
+            padding: 25px;
+            flex-grow: 1; /* Allows content to take available space */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .shop-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            color: var(--accent-primary);
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .shop-content p {
+            font-size: 0.95em;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .shop-card .cta-button {
+            align-self: flex-start; /* Align button to start of flex item */
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            background-color: var(--accent-secondary);
+            color: var(--bg-dark);
+        }
+
+        /* Call to Action Bar */
+        .cta-bar {
+            background-color: var(--accent-secondary);
+            color: var(--bg-dark);
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .cta-bar h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: var(--bg-dark);
+        }
+
+        .cta-bar p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: var(--bg-dark);
+        }
+
+        .cta-bar .cta-button {
+            background-color: var(--bg-dark);
+            color: var(--accent-primary);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .cta-bar .cta-button:hover {
+            background-color: #333; /* Darker on hover */
+            color: var(--accent-primary);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--bg-navbar-footer);
+            color: var(--text-muted);
+            text-align: center;
+            padding: 30px 0;
+            margin-top: auto; /* Push footer to the bottom */
+            box-shadow: 0 -4px 15px var(--shadow-dark);
+            font-size: 0.9em;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        .footer a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--accent-secondary);
+            text-decoration: underline;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .navbar .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .navbar-nav {
+                margin-top: 15px;
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+            }
+            .navbar-nav li {
+                margin: 10px 0;
+            }
+            .hero-content h1 {
+                font-size: 2.8em;
+            }
+            .hero-content p {
+                font-size: 1.1em;
+            }
+            .section-heading {
+                font-size: 2em;
+            }
+            .shop-grid {
+                grid-template-columns: 1fr; /* Stack shops on small screens */
+            }
+            .cta-bar h2 {
+                font-size: 1.8em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2.2em;
+            }
+            .hero-content p {
+                font-size: 1em;
+            }
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="navbar-brand">The Food Haven</a>
+            <ul class="navbar-nav">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#shops">Our Shops</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <h1>Savor Every Flavor at The Food Haven</h1>
+            <p>Your ultimate culinary destination in Lucknow, offering a symphony of tastes from around the world.</p>
+            <a href="#shops" class="cta-button">Explore Our Shops</a>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-heading">Discover The Food Haven</h2>
+            <p class="section-description">
+                Welcome to The Food Haven, Lucknow's premier multi-cuisine complex designed to tantalize your taste buds. We bring together a diverse array of culinary experiences under one roof, ensuring there's something delightful for everyone. From comforting classics to exotic treats, embark on a gastronomic journey with us!
+            </p>
+        </div>
+    </section>
+
+    <section id="shops" class="shop-showcase-section">
+        <div class="container">
+            <h2 class="section-heading">Our Culinary Corners</h2>
+            <p class="section-description">
+                Step into a world of flavors! Explore our unique shops, each offering a distinct and authentic dining experience.
+            </p>
+
+            <div class="shop-grid">
+                <div class="shop-card">
+                    <img src="https://images.unsplash.com/photo-1609534655988-3f5225c13553?q=80&w=1970&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cafeteria">
+                    <div class="shop-content">
+                        <h3>The Daily Grind Cafeteria</h3>
+                        <p>Your perfect spot for freshly brewed coffees, artisan teas, delightful pastries, and quick savory bites. Ideal for a morning pick-me-up or a relaxed evening.</p>
+                        <a href="cafeteria" class="cta-button">View Menu</a>
+                    </div>
+                </div>
+
+                <div class="shop-card">
+                    <img src="https://images.unsplash.com/photo-1743020295398-02fb4b442751?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Momo Shop">
+                    <div class="shop-content">
+                        <h3>Wow Momo</h3>
+                        <p>Dive into a world of succulent momos! Steamed, fried, or pan-fried, filled with juicy chicken, fresh vegetables, or paneer, served with authentic chutneys.</p>
+                        <a href="#" class="cta-button">Explore Flavors</a>
+                    </div>
+                </div>
+
+                <div class="shop-card">
+                    <img src="https://images.unsplash.com/photo-1693676624581-dbf350dafe61?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Ice Cream Bar">
+                    <div class="shop-content">
+                        <h3>Chill & Scoop Ice Cream Bar</h3>
+                        <p>Beat the heat with our vast selection of creamy ice creams, decadent sundaes, refreshing sorbets, and custom toppings. Create your perfect dessert!</p>
+                        <a href="#" class="cta-button">See Our Scoops</a>
+                    </div>
+                </div>
+
+                <div class="shop-card">
+                    <img src="https://cdn.citymapia.com/kottayam/dosa-cafe/1974/businessbanner.jpg" alt="South Indian Shop">
+                    <div class="shop-content">
+                        <h3>Spice Route South Indian Delights</h3>
+                        <p>Experience the authentic taste of South India! Enjoy crispy dosas, soft idlis, fluffy vadas, all served with flavorful sambar and an array of chutneys.</p>
+                        <a href="#" class="cta-button">Taste Tradition</a>
+                    </div>
+                </div>
+
+                <div class="shop-card">
+                    <img src="https://images.unsplash.com/photo-1565690941750-4a022d383365?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Fruit Juice Shop">
+                    <div class="shop-content">
+                        <h3>Pure Zest Juice Bar</h3>
+                        <p>Quench your thirst with our freshly pressed fruit juices and invigorating smoothies. Made with real fruits, no added sugar – pure and healthy refreshment.</p>
+                        <a href="#" class="cta-button">Get Juiced</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="cta-bar">
+        <div class="container">
+            <h2>Visit Us Today!</h2>
+            <p>Experience the best of Lucknow's culinary scene. We're open from 9 AM to 10 PM, everyday!</p>
+            <a href="#" class="cta-button">Get Directions</a> </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 The Food Haven Complex. All rights reserved.</p>
+            <p>
+                <a href="#">Privacy Policy</a> |
+                <a href="#">Terms of Service</a> |
+                <a href="#">Contact Us</a>
+            </p>
+        </div>
+    </footer>
+
+</body>
 </html>
